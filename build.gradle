@@ -7,6 +7,11 @@ plugins {
 group = 'com.kodilla'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility= '11'
+
+//compileJava.options.fork = true
+//compileJava.options.forkOptions.executable = '/Program Files/Amazon Corretto/jdk11.0.7_10'
+
 
 repositories {
     mavenCentral()
