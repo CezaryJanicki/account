@@ -9,10 +9,6 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 targetCompatibility= '11'
 
-//compileJava.options.fork = true
-//compileJava.options.forkOptions.executable = '/Program Files/Amazon Corretto/jdk11.0.7_10'
-
-
 repositories {
     mavenCentral()
 }
@@ -25,16 +21,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.cloud:spring-cloud-starter'
-
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
     // compileOnly 'org.postgresql:postgresql:42.2.13'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
     implementation 'junit:junit:4.13.1'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
+
     testCompileOnly 'org.projectlombok:lombok:1.18.12'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
-
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
@@ -49,42 +45,3 @@ dependencyManagement {
 test {
     useJUnitPlatform()
 }
-
-/*
-plugins {
-    id 'org.springframework.boot' version '2.4.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-}
-
-group = 'com.kodilla'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-
- */
