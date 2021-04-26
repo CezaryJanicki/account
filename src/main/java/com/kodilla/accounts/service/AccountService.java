@@ -5,6 +5,7 @@ import com.kodilla.accounts.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +35,9 @@ public class AccountService {
         accountRepository.deleteById(accountId);
     }
 
+    public List<Account> getAccountsByCustomerId(Long customerId) {
+        return new ArrayList<>();
+        //accountRepository.findByCustomerId(customerId);
+    }
 
 }

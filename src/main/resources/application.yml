@@ -3,3 +3,35 @@ spring:
     name: accounts
   profiles:
     active: production
+
+#DATABASE ACCESS
+
+datasource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/account?serverTimezone=Europe/Warsaw&useSSL=false&allowPublicKeyRetrieval=true
+  username: ${MYSQL_LOGIN}
+  password: ${MYSQL_PASSWORD}
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+#ACTUATOR INFO
+info:
+  app:
+    name: "Accounts"
+    version: "0.0.1"
+    profile: ${spring.profiles.active}
+  serverInfo:
+    port: ${server.port}
+
+#ACCESS
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'info, health, refresh'
+
+application:
+  allow-get-accounts: ${accounts.allow-get-accounts}
