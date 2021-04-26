@@ -14,4 +14,12 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     @Override
     List<Account> findAll();
+
+    @Override
+    Account save(Account account);
+
+    void deleteById(long id);
+
+    @Override
+    long count();
 }

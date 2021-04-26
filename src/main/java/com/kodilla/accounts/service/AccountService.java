@@ -25,4 +25,14 @@ public class AccountService {
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
+
+    public Account saveAccount(final Account account) {
+        return accountRepository.save(account);
+    }
+
+    public void deleteAccount(long accountId) {
+        accountRepository.deleteById(accountId);
+    }
+
+
 }
