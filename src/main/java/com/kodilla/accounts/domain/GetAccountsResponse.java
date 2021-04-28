@@ -13,6 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 public class GetAccountsResponse {
 
-    private List<AccountDto> accounts = new ArrayList<>();
+    private List<AccountDto> accounts;
 
 }
