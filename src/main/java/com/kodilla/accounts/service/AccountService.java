@@ -1,11 +1,12 @@
 package com.kodilla.accounts.service;
 
 import com.kodilla.accounts.domain.Account;
+import com.kodilla.accounts.domain.AccountDto;
+import com.kodilla.accounts.mapper.AccountMapper;
 import com.kodilla.accounts.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,9 @@ public class AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private AccountMapper accountMapper;
 
     public Optional<Account> getAccount(final Long id) {
         return accountRepository.findById(id);
@@ -35,9 +39,8 @@ public class AccountService {
         accountRepository.deleteById(accountId);
     }
 
-    public List<Account> getAccountsByCustomerId(Long customerId) {
-        return new ArrayList<>();
-        //accountRepository.findByCustomerId(customerId);
+    public List<AccountDto> getAccountsForCustomer(Long customerId) {
+        List<Account> accounts = accountRepository.findByCustomerId(customerId);
+        return accountMapper.mapToAccountDtoList(accounts);
     }
-
 }

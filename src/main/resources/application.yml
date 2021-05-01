@@ -11,10 +11,16 @@ datasource:
   url: jdbc:mysql://localhost:3306/account?serverTimezone=Europe/Warsaw&useSSL=false&allowPublicKeyRetrieval=true
   username: ${MYSQL_LOGIN}
   password: ${MYSQL_PASSWORD}
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
+jpa:
+  properties:
+      hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+  database: mysql
+  show-sql: true
+  hibernate:
+      ddl-auto: update
+      generate-ddl: true
+
 
 #ACTUATOR INFO
 info:
@@ -37,6 +43,4 @@ application:
   allow-get-accounts: ${accounts.allow-get-accounts}
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone=http://localhost:8761/eureka/:
+  client: ${eureka-client}

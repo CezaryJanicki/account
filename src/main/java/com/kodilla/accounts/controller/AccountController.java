@@ -37,12 +37,13 @@ public class AccountController {
     private AccountMapper accountMapper;
 
     @GetMapping
-    public GetAccountsResponse getAccounts(@RequestParam("accountId") Long customerId) {
+    public GetAccountsResponse getAccounts(@RequestParam("customerId") Long customerId) {
+        log.info("Getting accouns for customerId: {} ", customerId);
         if(!allowGetAccounts) {
             log.info("Getting accounts is disables");
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Getting accounts id disabled");
         }
-        List<AccountDto> accounts =  accountMapper.mapToAccountDtoList(accountService.getAccountsByCustomerId(customerId));
+        List<AccountDto> accounts =  accountService.getAccountsForCustomer(customerId);
         return GetAccountsResponse.of(accounts);
     }
 
