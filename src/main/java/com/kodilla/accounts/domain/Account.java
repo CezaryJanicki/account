@@ -28,4 +28,14 @@ public class Account {
 
     @Column(name = "availableFounds")
     private BigDecimal availableFounds;
+
+    @Column(name = "customerId")
+    private Long customerId;
+
+    public Account(Long id, String nrb, String currency, BigDecimal availableFounds) {
+        this.id = id;
+        this.nrb = nrb;
+        this.currency = currency;
+        this.availableFounds = availableFounds;
+    }
 }

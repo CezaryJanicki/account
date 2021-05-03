@@ -44,3 +44,6 @@ application:
 
 eureka:
   client: ${eureka-client}
+
+server:
+  port: 9998

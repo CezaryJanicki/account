@@ -20,15 +20,14 @@ import java.util.List;
 
 @RefreshScope
 @Slf4j
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
-@RequestMapping("/v1")
+@RequestMapping(value = "/v1/accounts", produces = {MediaType.APPLICATION_JSON_VALUE})
 @RequiredArgsConstructor
 public class AccountController {
 
     @Value("${application.allow-get-accounts}")
     private boolean allowGetAccounts;
-
 
     @Autowired
     private AccountService accountService;
@@ -38,7 +37,7 @@ public class AccountController {
 
     @GetMapping
     public GetAccountsResponse getAccounts(@RequestParam("customerId") Long customerId) {
-        log.info("Getting accouns for customerId: {} ", customerId);
+        log.info("Getting accounts for customerId: {} ", customerId);
         if(!allowGetAccounts) {
             log.info("Getting accounts is disables");
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Getting accounts id disabled");
